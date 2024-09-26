@@ -4,6 +4,30 @@
              x:Class="FlashLearn.Views.CreateNewCardPage"
              Title="CreateNewCardPage">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" 
+               Text="Enter front side of your card"/>
+        <Entry Grid.Row="1" 
+               Placeholder="Red"/>
+        <Label Grid.Row="2"
+               Text="Enter back side of your card"/>
+        <Entry Grid.Row="3"
+               Placeholder="Czerwony"/>
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" 
+                    Text="Finish"/>
+            <Button Grid.Column="1" 
+                    Text="Next"/>
+        </Grid>
     </Grid>
 </ContentPage>

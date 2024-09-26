@@ -12,7 +12,10 @@
         <Label Grid.Row="0" 
                Text="Enter name for your new deck"/>
         <Entry Grid.Row="1" 
-               Placeholder="Colors in english..."/>
-        <Button Grid.Row="2" Text="Next"/>
+               Placeholder="Colors in english..."
+               Text="{Binding DeckName, Mode=OneWayToSource}"/>
+        <Button Grid.Row="2" 
+                Text="Next"
+                Command="{Binding NextStepCommand}"/>
     </Grid>
 </ContentPage>

@@ -8,7 +8,7 @@
         public DeckModel(string name, List<CardModel> cards = null)
         {
             Name = name;
-            Cards = cards;
+            Cards = cards == null ? new List<CardModel>() : cards;
         }
     }
 }
