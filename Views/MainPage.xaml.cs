@@ -10,5 +10,11 @@ namespace FlashLearn
 
             InitializeComponent();
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            (BindingContext as ViewModelBase)?.OnAppearing();
+        }
     }
 }

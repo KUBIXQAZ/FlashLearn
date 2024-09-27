@@ -10,5 +10,7 @@ namespace FlashLearn.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
+
+        internal virtual void OnAppearing() { }
     }
 }

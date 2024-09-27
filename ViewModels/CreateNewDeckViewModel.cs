@@ -25,7 +25,7 @@ namespace FlashLearn.ViewModels
 
             CreateNewCardPage createNewCardPage = new CreateNewCardPage();
             createNewCardPage.BindingContext = new CreateNewCardViewModel(deck);
-            Shell.Current.Navigation.PushAsync(new CreateNewCardPage());
+            Shell.Current.Navigation.PushAsync(createNewCardPage);
         }
     }
 }

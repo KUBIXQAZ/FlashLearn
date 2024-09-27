@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using FlashLearn.Models;
 using FlashLearn.MVVM;
-using FlashLearn.ViewModels;
 using FlashLearn.Views;
+using Newtonsoft.Json;
 
 namespace FlashLearn.ViewModels
 {
@@ -29,9 +24,28 @@ namespace FlashLearn.ViewModels
 
         public RelayCommand CreateNewDeckCommand => new RelayCommand(execute => CreateNewDeck());
 
-        public MainViewModel()
+        internal override void OnAppearing()
         {
-            Decks.Add(new DeckModel("niemiecki v1"));
+            base.OnAppearing();
+
+            LoadDecks();
+        }
+
+        private void LoadDecks()
+        {
+            string folder = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\KUBIXQAZ\\FlashLearn";
+            string path = $"{folder}\\decks.json";
+
+            if(!Directory.Exists(folder)) Directory.CreateDirectory(folder);
+            else
+            {
+                if(File.Exists(path))
+                {
+                    string json = File.ReadAllText(path);
+                    List<DeckModel> decks = JsonConvert.DeserializeObject<List<DeckModel>>(json);
+                    Decks = new ObservableCollection<DeckModel>(decks);
+                }
+            }
         }
 
         private void CreateNewDeck()
