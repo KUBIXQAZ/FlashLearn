@@ -3,12 +3,13 @@
     x:Class="FlashLearn.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:FlashLearn"
+    xmlns:views="clr-namespace:FlashLearn.Views"
     Shell.FlyoutBehavior="Disabled"
     Title="FlashLearn">
+    
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
+        ContentTemplate="{DataTemplate views:MainPage}"
         Route="MainPage" />
 
 </Shell>

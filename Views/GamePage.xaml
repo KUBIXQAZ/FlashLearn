@@ -3,10 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FlashLearn.Views.GamePage"
              Title="GamePage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0"
+              Padding="40"
+              Background="Gray"
+              HorizontalOptions="CenterAndExpand"
+              VerticalOptions="CenterAndExpand">
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding FlipCardCommand}"/>
+            </Grid.GestureRecognizers>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Text="{Binding Card.FrontString}"
+                   FontSize="26"
+                   Grid.Row="0"/>
+            <Label Text="{Binding Card.BackString}"
+                   IsVisible="{Binding IsBackSideVisible}"
+                   FontSize="26"
+                   Grid.Row="1"
+                   HorizontalTextAlignment="Center"/>
+        </Grid>
+        <Button Grid.Row="1"
+                Text="{Binding ProgressionButtonText}"
+                IsEnabled="{Binding IsGoToNextButtonEnabled}"
+                Command="{Binding ProgressionCommand}"/>
+    </Grid>
 </ContentPage>

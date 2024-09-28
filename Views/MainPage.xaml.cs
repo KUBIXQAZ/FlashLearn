@@ -1,14 +1,14 @@
 ﻿using FlashLearn.ViewModels;
 
-namespace FlashLearn
+namespace FlashLearn.Views
 {
     public partial class MainPage : ContentPage
     {
         public MainPage()
         {
-            BindingContext = new MainViewModel();
-
             InitializeComponent();
+
+            BindingContext = new MainViewModel();
         }
 
         protected override void OnAppearing()
