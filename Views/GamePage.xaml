@@ -22,7 +22,8 @@
             </Grid.RowDefinitions>
             <Label Text="{Binding Card.FrontString}"
                    FontSize="26"
-                   Grid.Row="0"/>
+                   Grid.Row="0"
+                   HorizontalTextAlignment="Center"/>
             <Label Text="{Binding Card.BackString}"
                    IsVisible="{Binding IsBackSideVisible}"
                    FontSize="26"

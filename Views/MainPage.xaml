@@ -2,35 +2,52 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FlashLearn.Views.MainPage">
-    <Grid>
+    <Grid Padding="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <Button Text="+"
-                    Command="{Binding CreateNewDeckCommand}"/>
+            <ImageButton Source="plus_lg.svg"
+                         HeightRequest="40"
+                         Background="Gray"
+                         CornerRadius="10"
+                         Command="{Binding CreateNewDeckCommand}"/>
         </Grid>
-        <ScrollView Grid.Row="1">
-            <ListView ItemsSource="{Binding Decks}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid>
+        <CollectionView ItemsSource="{Binding Decks}"
+                  SelectionMode="None" 
+                  Margin="0, 15, 0, 0"
+                  Grid.Row="1"
+                  VerticalScrollBarVisibility="Never">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid HeightRequest="100">
+                        <Frame CornerRadius="20"
+                               BorderColor="Transparent"
+                               Background="Gray"
+                               Margin="0, 0, 0, 10"
+                               Padding="20, 5, 20, 5">
+                            <Grid VerticalOptions="Center">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding PlayCommand}"/>
+                                </Grid.GestureRecognizers>
                                 <Label Text="{Binding Name}"
-                                       Grid.Column="0"/>
-                                <Button Grid.Column="1"
-                                        Text="Play"
-                                        Command="{Binding PlayCommand}"/>
+                                       Grid.Column="0"
+                                       FontSize="26"
+                                       VerticalTextAlignment="Center"/>
+                                <Image Grid.Column="1"
+                                       Source="play_fill.svg"
+                                       WidthRequest="50"
+                                       HeightRequest="50"/>
                             </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </ScrollView>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </Grid>
 </ContentPage>

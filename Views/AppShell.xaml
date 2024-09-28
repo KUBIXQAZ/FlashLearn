@@ -5,7 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:FlashLearn.Views"
     Shell.FlyoutBehavior="Disabled"
-    Title="FlashLearn">
+    Title="FlashLearn"
+    Shell.NavBarIsVisible="False">
     
     <ShellContent
         Title="Home"
