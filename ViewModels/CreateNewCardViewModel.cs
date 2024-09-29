@@ -1,12 +1,6 @@
 ﻿using FlashLearn.Models;
 using FlashLearn.MVVM;
 using FlashLearn.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace FlashLearn.ViewModels
@@ -26,6 +20,17 @@ namespace FlashLearn.ViewModels
             {
                 _cardFrontText = value;
                 OnPropertyChanged(nameof(CardFrontText));
+
+                if(_cardFrontText != null && _cardBackText != null)
+                {
+                    if(_cardFrontText.Length > 0 && _cardBackText.Length > 0)
+                    {
+                        IsProgressionButtonEnabled = true;
+                    } else
+                    {
+                        IsProgressionButtonEnabled = false;
+                    }
+                }
             }
         }
 
@@ -37,12 +42,37 @@ namespace FlashLearn.ViewModels
             {
                 _cardBackText = value;
                 OnPropertyChanged(nameof(CardBackText));
+
+                if (_cardBackText != null && _cardFrontText != null)
+                {
+                    if (_cardBackText.Length > 0 && _cardFrontText.Length > 0)
+                    {
+                        IsProgressionButtonEnabled = true;
+                    }
+                    else
+                    {
+                        IsProgressionButtonEnabled = false;
+                    }
+                }
+            }
+        }
+
+        private bool _isProgressionButtonEnabled;
+        public bool IsProgressionButtonEnabled
+        {
+            get => _isProgressionButtonEnabled;
+            set
+            {
+                _isProgressionButtonEnabled = value;
+                OnPropertyChanged(nameof(IsProgressionButtonEnabled));
             }
         }
 
         public CreateNewCardViewModel(DeckModel deck)
         {
             _deck = deck;
+
+            IsProgressionButtonEnabled = false;
         }
 
         private void FinishCreatingDeck()

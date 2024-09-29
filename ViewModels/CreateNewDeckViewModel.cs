@@ -14,10 +14,32 @@ namespace FlashLearn.ViewModels
             {
                 _deckName = value;
                 OnPropertyChanged(nameof(DeckName));
+
+                if(_deckName != null)
+                {
+                    if (_deckName.Length > 0) IsNextButtonEnabled = true;
+                    else IsNextButtonEnabled = false;
+                }
+            }
+        }
+
+        private bool _isNextButtonEnabled;
+        public bool IsNextButtonEnabled
+        {
+            get => _isNextButtonEnabled;
+            set
+            {
+                _isNextButtonEnabled = value;
+                OnPropertyChanged(nameof(IsNextButtonEnabled));
             }
         }
 
         public RelayCommand NextStepCommand => new RelayCommand(execute => NextStep());
+
+        public CreateNewDeckViewModel()
+        {
+            IsNextButtonEnabled = false;
+        }
 
         private void NextStep()
         {

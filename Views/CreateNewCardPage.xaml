@@ -43,10 +43,12 @@
                 <Button Grid.Column="0" 
                         Text="Finish"
                         Margin="0, 0, 3, 0"
+                        IsEnabled="{Binding IsProgressionButtonEnabled}"
                         Command="{Binding FinishCreatingDeckCommand}"/>
                 <Button Grid.Column="1" 
                         Text="Next"
                         Margin="3, 0, 0, 0"
+                        IsEnabled="{Binding IsProgressionButtonEnabled}"
                         Command="{Binding CreateNextCardCommand}"/>
             </Grid>
         </Grid>
