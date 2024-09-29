@@ -19,17 +19,6 @@ namespace FlashLearn.ViewModels
             }
         }
 
-        private int _cardsCount;
-        private int CardsCount
-        {
-            get => _cardsCount;
-            set
-            {
-                _cardsCount = value;    
-                if (_cardsCount == 1) ProgressionButtonText = ProgressionStatus.Finish.ToString();
-            }
-        }
-
         private CardModel _card;
         public CardModel Card
         {
@@ -39,7 +28,13 @@ namespace FlashLearn.ViewModels
                 _card = value;
                 OnPropertyChanged(nameof(Card));
 
-                CardsCount = _deck.Cards.Count;
+                if(_deck != null)
+                {
+                    if (_deck.Cards.Count == 1)
+                    {
+                        ProgressionButtonText = ProgressionStatus.Finish.ToString();
+                    }
+                }
             }
         } 
 
