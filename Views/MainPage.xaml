@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FlashLearn.Views.MainPage">
-    <Grid Padding="15">
+    <Grid Padding="15,15,15,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
@@ -10,9 +10,12 @@
         <Grid Grid.Row="0">
             <ImageButton Source="plus_lg.svg"
                          HeightRequest="40"
-                         Background="Gray"
                          CornerRadius="10"
-                         Command="{Binding CreateNewDeckCommand}"/>
+                         Command="{Binding CreateNewDeckCommand}">
+                <ImageButton.Shadow>
+                    <Shadow/>
+                </ImageButton.Shadow>
+            </ImageButton>
         </Grid>
         <CollectionView ItemsSource="{Binding Decks}"
                   SelectionMode="None" 
@@ -24,9 +27,13 @@
                     <Grid HeightRequest="100">
                         <Frame CornerRadius="20"
                                BorderColor="Transparent"
-                               Background="Gray"
-                               Margin="0, 0, 0, 10"
-                               Padding="20, 5, 20, 5">
+                               Background="{StaticResource CollectionViewItemBackground}"
+                               Margin="5, 5, 5, 10"
+                               Padding="20, 5, 20, 5"
+                               HasShadow="True">
+                            <Frame.Shadow>
+                                <Shadow/>
+                            </Frame.Shadow>
                             <Grid VerticalOptions="Center">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>

@@ -5,7 +5,7 @@
              Title="CreateNewCardPage">
     <Frame VerticalOptions="Center"
            HorizontalOptions="Fill"
-           Background="Black"
+           Background="{StaticResource ContainerBackground}"
            CornerRadius="15"
            BorderColor="Transparent"
            Margin="40"

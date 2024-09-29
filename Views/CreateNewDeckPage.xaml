@@ -5,7 +5,7 @@
              Title="CreateNewDeckPage">
     <Frame VerticalOptions="Center"
            HorizontalOptions="Fill"
-           Background="Black"
+           BackgroundColor="{StaticResource ContainerBackground}"
            CornerRadius="15"
            BorderColor="Transparent"
            Margin="40"

@@ -13,13 +13,10 @@
                BorderColor="Transparent"
                CornerRadius="20"
                Padding="0"
-               Background="Gray"
+               Background="{StaticResource CardBackground}"
                HasShadow="True">
             <Frame.Shadow>
-                <Shadow Offset="0,0"
-                        Radius="35"
-                        Opacity="1"
-                        Brush="Black" />
+                <Shadow/>
             </Frame.Shadow>
             <Grid HorizontalOptions="Fill"
                   VerticalOptions="Fill"
@@ -44,6 +41,10 @@
                 FontSize="26"
                 Text="{Binding ProgressionButtonText}"
                 IsEnabled="{Binding IsGoToNextButtonEnabled}"
-                Command="{Binding ProgressionCommand}"/>
+                Command="{Binding ProgressionCommand}">
+            <Button.Shadow>
+                <Shadow/>
+            </Button.Shadow>              
+        </Button>
     </Grid>
 </ContentPage>
