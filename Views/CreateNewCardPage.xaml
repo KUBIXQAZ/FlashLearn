@@ -3,35 +3,52 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FlashLearn.Views.CreateNewCardPage"
              Title="CreateNewCardPage">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
-        <Label Grid.Row="0" 
-               Text="Enter front side of your card"/>
-        <Entry Grid.Row="1" 
-               Placeholder="Red"
-               Text="{Binding CardFrontText, Mode=OneWayToSource}"/>
-        <Label Grid.Row="2"
-               Text="Enter back side of your card"/>
-        <Entry Grid.Row="3"
-               Placeholder="Czerwony"
-               Text="{Binding CardBackText, Mode=OneWayToSource}"/>
-        <Grid Grid.Row="4">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" 
-                    Text="Finish"
-                    Command="{Binding FinishCreatingDeckCommand}"/>
-            <Button Grid.Column="1" 
-                    Text="Next"
-                    Command="{Binding CreateNextCardCommand}"/>
+    <Frame VerticalOptions="Center"
+           HorizontalOptions="Fill"
+           Background="Black"
+           CornerRadius="15"
+           BorderColor="Transparent"
+           Margin="40"
+           HeightRequest="400">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" 
+                   FontSize="26"
+                   HorizontalTextAlignment="Center"
+                   Text="Enter front side of your card"/>
+            <Entry Grid.Row="1" 
+                   Placeholder="Red"
+                   Margin="0, 20, 0, 0"
+                   Text="{Binding CardFrontText, Mode=OneWayToSource}"/>
+            <Label Grid.Row="2"
+                   FontSize="26"
+                   HorizontalTextAlignment="Center"
+                   Text="Enter back side of your card"/>
+            <Entry Grid.Row="3"
+                   Placeholder="Czerwony"
+                   Margin="0, 20, 0, 0"
+                   Text="{Binding CardBackText, Mode=OneWayToSource}"/>
+            <Grid Grid.Row="4"
+                  VerticalOptions="End">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" 
+                        Text="Finish"
+                        Margin="0, 0, 3, 0"
+                        Command="{Binding FinishCreatingDeckCommand}"/>
+                <Button Grid.Column="1" 
+                        Text="Next"
+                        Margin="3, 0, 0, 0"
+                        Command="{Binding CreateNextCardCommand}"/>
+            </Grid>
         </Grid>
-    </Grid>
+    </Frame>
 </ContentPage>

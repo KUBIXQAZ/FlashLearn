@@ -3,19 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FlashLearn.Views.CreateNewDeckPage"
              Title="CreateNewDeckPage">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
-        <Label Grid.Row="0" 
-               Text="Enter name for your new deck"/>
-        <Entry Grid.Row="1" 
-               Placeholder="Colors in english..."
-               Text="{Binding DeckName, Mode=OneWayToSource}"/>
-        <Button Grid.Row="2" 
-                Text="Next"
-                Command="{Binding NextStepCommand}"/>
-    </Grid>
+    <Frame VerticalOptions="Center"
+           HorizontalOptions="Fill"
+           Background="Black"
+           CornerRadius="15"
+           BorderColor="Transparent"
+           Margin="40"
+           HeightRequest="400">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" 
+                   Text="Enter name for your new deck"
+                   HorizontalTextAlignment="Center"
+                   VerticalOptions="Start"
+                   FontSize="26"/>
+            <Entry Grid.Row="1" 
+                   Placeholder="Colors in english..."
+                   VerticalOptions="Start"
+                   Margin="0, 20, 0, 0"
+                   Text="{Binding DeckName, Mode=OneWayToSource}"/>
+            <Button Grid.Row="2" 
+                    VerticalOptions="Center"
+                    Text="Next"
+                    Command="{Binding NextStepCommand}"/>
+        </Grid>
+    </Frame>
 </ContentPage>
