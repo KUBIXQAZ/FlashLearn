@@ -6,23 +6,25 @@ namespace FlashLearn.Models
 {
     public class DeckModel
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public List<CardModel> Cards { get; set; }
 
         public DeckModel(string name, List<CardModel> cards = null)
         {
+            Id = -1;
             Name = name;
             Cards = cards == null ? new List<CardModel>() : cards;
         }
 
-        public RelayCommand PlayCommand => new RelayCommand(execute => Play());
+        public RelayCommand ViewDeckCommand => new RelayCommand(execute => ViewDeck());
 
-        private void Play()
+        private void ViewDeck()
         {
-            GamePage gamePage = new GamePage();
-            GameViewModel gameViewModel = new GameViewModel(this);
-            gamePage.BindingContext = gameViewModel;
-            Shell.Current.Navigation.PushAsync(gamePage);
+            DeckViewPage deckViewPage = new DeckViewPage();
+            DeckViewViewModel viewModel = new DeckViewViewModel(this);
+            deckViewPage.BindingContext = viewModel;
+            Shell.Current.Navigation.PushAsync(deckViewPage);
         }
     }
 }

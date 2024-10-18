@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlashLearn.Views.DeckViewPage"
+             Title="DeckViewPage">
+    <Frame VerticalOptions="Center"
+           HorizontalOptions="Fill"
+           BackgroundColor="{StaticResource ContainerBackground}"
+           CornerRadius="15"
+           BorderColor="Transparent"
+           Margin="40"
+           HeightRequest="400">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" 
+                   Text="{Binding DeckName}"
+                   HorizontalTextAlignment="Center"
+                   VerticalOptions="Center"
+                   FontSize="26"/>
+            <Button Grid.Row="1" 
+                    VerticalOptions="Center"
+                    Text="Play"
+                    Command="{Binding PlayCommand}"
+                    Margin="0,0,0,5"/>
+            <Button Grid.Row="2" 
+                    VerticalOptions="Center"
+                    Background="{Binding DeleteButtonColor}"
+                    Text="{Binding DeleteButtonText}"
+                    Command="{Binding DeleteCommand}"/>
+        </Grid>
+    </Frame>
+</ContentPage>

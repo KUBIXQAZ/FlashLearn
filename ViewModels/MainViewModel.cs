@@ -44,6 +44,13 @@ namespace FlashLearn.ViewModels
                     string json = File.ReadAllText(path);
                     List<DeckModel> decks = JsonConvert.DeserializeObject<List<DeckModel>>(json);
                     Decks = new ObservableCollection<DeckModel>(decks);
+
+                    int i = 0;
+                    foreach(DeckModel deck in Decks)
+                    {
+                        deck.Id = i;
+                        i++;
+                    }
                 }
             }
         }

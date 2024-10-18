@@ -40,7 +40,7 @@
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding PlayCommand}"/>
+                                    <TapGestureRecognizer Command="{Binding ViewDeckCommand}"/>
                                 </Grid.GestureRecognizers>
                                 <Label Text="{Binding Name}"
                                        Grid.Column="0"

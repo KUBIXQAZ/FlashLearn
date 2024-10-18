@@ -49,7 +49,7 @@ namespace FlashLearn.ViewModels
             }
         }
 
-        private string _progressionButtonText;
+        private string _progressionButtonText = ProgressionStatus.Next.ToString();
         public string ProgressionButtonText
         {
             get => _progressionButtonText;
@@ -81,7 +81,6 @@ namespace FlashLearn.ViewModels
         {
             IsGoToNextButtonEnabled = false;
             IsBackSideVisible = false;
-            _progressionButtonText = ProgressionStatus.Next.ToString();
 
             LoadCard();
         }
