@@ -106,10 +106,8 @@ namespace FlashLearn.ViewModels
             CardModel card = new CardModel(CardFrontText,CardBackText);
             _deck.Cards.Add(card);
 
-            CreateNewCardPage createNewCardPage = new CreateNewCardPage();
-            CreateNewCardViewModel createNewCardViewModel = new CreateNewCardViewModel(_deck);
-            createNewCardPage.BindingContext = createNewCardViewModel;
-            Shell.Current.Navigation.PushAsync(createNewCardPage);
+            CardFrontText = string.Empty;
+            CardBackText = string.Empty;
         }
     }
 }

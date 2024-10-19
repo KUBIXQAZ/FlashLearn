@@ -25,7 +25,7 @@
             <Entry Grid.Row="1" 
                    Placeholder="Red"
                    Margin="0, 20, 0, 0"
-                   Text="{Binding CardFrontText, Mode=OneWayToSource}"/>
+                   Text="{Binding CardFrontText, Mode=TwoWay}"/>
             <Label Grid.Row="2"
                    FontSize="26"
                    HorizontalTextAlignment="Center"
@@ -33,7 +33,7 @@
             <Entry Grid.Row="3"
                    Placeholder="Czerwony"
                    Margin="0, 20, 0, 0"
-                   Text="{Binding CardBackText, Mode=OneWayToSource}"/>
+                   Text="{Binding CardBackText, Mode=TwoWay}"/>
             <Grid Grid.Row="4"
                   VerticalOptions="End">
                 <Grid.ColumnDefinitions>
