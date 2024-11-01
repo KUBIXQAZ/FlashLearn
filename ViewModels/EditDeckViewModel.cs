@@ -68,15 +68,61 @@ namespace FlashLearn.ViewModels
             }
         }
 
+        private string _deckTitle;
+        public string DeckTitle
+        {
+            get => _deckTitle;
+            set
+            {
+                _deckTitle = value;
+                OnPropertyChanged(nameof(DeckTitle));
+                UpdateDeckName();
+            }
+        }
+
+        private string _deleteButtonText = DeleteButtonTextEnum.Delete.ToString();
+        public string DeleteButtonText
+        {
+            get => _deleteButtonText;
+            set
+            {
+                _deleteButtonText = value;
+                OnPropertyChanged(nameof(DeleteButtonText));
+            }
+        }
+
+        private Brush _deleteButtonColor;
+        public Brush DeleteButtonColor
+        {
+            get => _deleteButtonColor;
+            set
+            {
+                _deleteButtonColor = value;
+                OnPropertyChanged(nameof(DeleteButtonColor));
+            }
+        }
+        private Brush DefaultDeleteButtonColor;
+
+        enum DeleteButtonTextEnum
+        {
+            Delete,
+            Confirm
+        }
+
         public RelayCommand SwipeLeftCommand => new RelayCommand(execute => SwipeLeft());
         public RelayCommand SwipeRightCommand => new RelayCommand(execute => SwipeRight());
         public RelayCommand SaveDeckCommand => new RelayCommand(execute => SaveDeck());
         public RelayCommand DeleteCardCommand => new RelayCommand(execute => DeleteCard());
         public RelayCommand ReturnToMenuCommand => new RelayCommand(execute => ReturnToMenu());
+        public RelayCommand DeleteCommand => new RelayCommand(execute => DeleteDeck());
 
         public EditDeckViewModel(DeckModel deck)
         {
             _deck = deck;
+            DeckTitle = _deck.Name;
+
+            DefaultDeleteButtonColor = new Button().Background;
+            DeleteButtonColor = DefaultDeleteButtonColor;
 
             CardChanged();
         }
@@ -85,6 +131,11 @@ namespace FlashLearn.ViewModels
         {
             _deck.Cards[_activeCardIndex].FrontString = _cardFrontText;
             _deck.Cards[_activeCardIndex].BackString = _cardBackText;
+        }
+
+        private void UpdateDeckName()
+        {
+            _deck.Name = _deckTitle;
         }
 
         private void SwipeLeft()
@@ -139,7 +190,44 @@ namespace FlashLearn.ViewModels
 
         private void ReturnToMenu()
         {
-            Shell.Current.Navigation.PopAsync();
+            Shell.Current.Navigation.PopToRootAsync();
+        }
+
+        private void DeleteDeck()
+        {
+            if (DeleteButtonText == DeleteButtonTextEnum.Confirm.ToString())
+            {
+                string folder = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\KUBIXQAZ\\FlashLearn";
+                string path = $"{folder}\\decks.json";
+
+                if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
+
+                if (File.Exists(path))
+                {
+                    string json = File.ReadAllText(path);
+                    List<DeckModel> decks = JsonConvert.DeserializeObject<List<DeckModel>>(json);
+
+                    decks.RemoveAt(_deck.Id);
+
+                    string save_json = JsonConvert.SerializeObject(decks);
+                    File.WriteAllText(path, save_json);
+
+                    Shell.Current.Navigation.PopToRootAsync();
+                }
+            }
+
+            DeleteButtonText = DeleteButtonTextEnum.Confirm.ToString();
+            DeleteButtonColor = Brush.Red;
+
+            IDispatcherTimer timer = Application.Current.Dispatcher.CreateTimer();
+            timer.Interval = TimeSpan.FromSeconds(3);
+            timer.Tick += (s, e) =>
+            {
+                DeleteButtonText = DeleteButtonTextEnum.Delete.ToString();
+                DeleteButtonColor = DefaultDeleteButtonColor;
+                timer.Stop();
+            };
+            timer.Start();
         }
     }
 }

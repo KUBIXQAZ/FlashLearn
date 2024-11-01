@@ -15,7 +15,6 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <Label Grid.Row="0" 
                    Text="{Binding DeckName}"
@@ -31,11 +30,6 @@
                     Text="Edit"
                     Command="{Binding EditCommand}"
                     Margin="0,0,0,5"/>
-            <Button Grid.Row="3" 
-                    VerticalOptions="Center"
-                    Background="{Binding DeleteButtonColor}"
-                    Text="{Binding DeleteButtonText}"
-                    Command="{Binding DeleteCommand}"/>
         </Grid>
     </Frame>
 </ContentPage>
