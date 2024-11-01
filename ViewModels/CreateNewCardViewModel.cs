@@ -1,6 +1,5 @@
 ﻿using FlashLearn.Models;
 using FlashLearn.MVVM;
-using FlashLearn.Views;
 using Newtonsoft.Json;
 
 namespace FlashLearn.ViewModels

@@ -45,6 +45,7 @@ namespace FlashLearn.ViewModels
 
         public RelayCommand PlayCommand => new RelayCommand(execute => Play());
         public RelayCommand DeleteCommand => new RelayCommand(execute => DeleteDeck());
+        public RelayCommand EditCommand => new RelayCommand(execute => EditDeck());
 
         enum DeleteButtonTextEnum
         {
@@ -105,6 +106,14 @@ namespace FlashLearn.ViewModels
                 timer.Stop();
             };
             timer.Start();
+        }
+
+        private void EditDeck()
+        {
+            EditDeckPage page = new EditDeckPage();
+            EditDeckViewModel viewModel = new EditDeckViewModel(_deck);
+            page.BindingContext = viewModel;
+            Shell.Current.Navigation.PushAsync(page);
         }
     }
 }

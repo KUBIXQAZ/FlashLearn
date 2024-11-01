@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlashLearn.Views.EditDeckPage"
+             Title="EditDeckPage">
+    <Frame VerticalOptions="Center"
+           HorizontalOptions="Fill"
+           Background="{StaticResource ContainerBackground}"
+           CornerRadius="15"
+           BorderColor="Transparent"
+           Margin="40"
+           HeightRequest="450">
+        <Frame.GestureRecognizers>
+            <SwipeGestureRecognizer Command="{Binding SwipeLeftCommand}" 
+                                    Direction="Left"/>
+            <SwipeGestureRecognizer Command="{Binding SwipeRightCommand}" 
+                                    Direction="Right"/>
+        </Frame.GestureRecognizers>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0"
+                   Text="{Binding CardNumber}"
+                   HorizontalOptions="Center"
+                   FontSize="20"
+                   Margin="0,0,0,10"/>
+            <Label Grid.Row="1" 
+                   FontSize="26"
+                   HorizontalTextAlignment="Center"
+                   Text="Enter front side of your card"/>
+            <Entry Grid.Row="2" 
+                   Margin="0, 20, 0, 0"
+                   Text="{Binding CardFrontText, Mode=TwoWay}"/>
+            <Label Grid.Row="3"
+                   FontSize="26"
+                   HorizontalTextAlignment="Center"
+                   Text="Enter back side of your card"/>
+            <Entry Grid.Row="4"
+                   Margin="0, 20, 0, 0"
+                   Text="{Binding CardBackText, Mode=TwoWay}"/>
+            <Grid Grid.Row="5"
+                  VerticalOptions="End">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button Grid.Column="0" 
+                        Text="Save"
+                        Margin="0, 0, 3, 0"
+                        Command="{Binding SaveDeckCommand}"/>
+                <Button Grid.Column="1" 
+                        Text="Delete"
+                        Margin="3, 0, 0, 0"
+                        Command="{Binding DeleteCardCommand}"/>
+                <Button Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="1"
+                        Text="Return"
+                        Margin="0,6,0,0"
+                        Command="{Binding ReturnToMenuCommand}"/>
+            </Grid>
+        </Grid>
+    </Frame>
+</ContentPage>
