@@ -2,9 +2,9 @@ using FlashLearn.ViewModels;
 
 namespace FlashLearn.Views;
 
-public partial class EditDeckPage : ContentPage
+public partial class AddNewCardPage : ContentPage
 {
-	public EditDeckPage()
+	public AddNewCardPage()
 	{
 		InitializeComponent();
 	}

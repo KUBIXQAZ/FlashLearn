@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlashLearn.Views.AddNewCardPage"
+             Title="AddNewCardPage">
+    <Frame VerticalOptions="Center"
+           HorizontalOptions="Fill"
+           Background="{StaticResource ContainerBackground}"
+           CornerRadius="15"
+           BorderColor="Transparent"
+           Margin="40"
+           HeightRequest="400">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" 
+                   FontSize="26"
+                   HorizontalTextAlignment="Center"
+                   Text="Enter front side of your card"/>
+            <Entry Grid.Row="1" 
+                   Placeholder="Red"
+                   Margin="0, 20, 0, 0"
+                   Text="{Binding CardFrontText, Mode=TwoWay}"/>
+            <Label Grid.Row="2"
+                   FontSize="26"
+                   HorizontalTextAlignment="Center"
+                   Text="Enter back side of your card"/>
+            <Entry Grid.Row="3"
+                   Placeholder="Czerwony"
+                   Margin="0, 20, 0, 0"
+                   Text="{Binding CardBackText, Mode=TwoWay}"/>
+            <Grid Grid.Row="4"
+                  VerticalOptions="End">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" 
+                        Text="Cancel"
+                        Margin="0, 0, 3, 0"
+                        Command="{Binding CancelCommand}"/>
+                <Button Grid.Column="1" 
+                        Text="Add Card"
+                        Margin="3, 0, 0, 0"
+                        IsEnabled="{Binding IsAddButtonEnabled}"
+                        Command="{Binding AddCardCommand}"/>
+            </Grid>
+        </Grid>
+    </Frame>
+</ContentPage>

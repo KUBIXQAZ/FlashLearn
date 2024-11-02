@@ -17,14 +17,18 @@
                CornerRadius="15"
                BorderColor="Transparent">
             <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
                 <Label Text="Title"
-                       HorizontalOptions="Center"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center"
+                       Margin="0,0,10,0"
+                       VerticalTextAlignment="Center"
                        FontSize="26"/>
-                <Entry Grid.Row="1"
+                <Entry Grid.Column="1"
+                       VerticalOptions="Center"
                        Text="{Binding DeckTitle, Mode=TwoWay}"/>
             </Grid>
         </Frame>
@@ -86,6 +90,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="5*"/>
@@ -106,6 +111,12 @@
                 <Button Grid.Column="0"
                         Grid.ColumnSpan="2"
                         Grid.Row="1"
+                        Text="Add Card"
+                        Margin="0,6,0,0"
+                        Command="{Binding AddCardCommand}"/>
+                <Button Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="2"
                         Text="Return"
                         Margin="0,6,0,0"
                         Command="{Binding ReturnToMenuCommand}"/>
