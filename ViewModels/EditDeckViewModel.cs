@@ -110,14 +110,25 @@ namespace FlashLearn.ViewModels
             Confirm
         }
 
-        private CardModel _newCard = null;
-        public CardModel NewCard
+        private bool _isNoCardsAlertVisible;
+        public bool IsNoCardsAlertVisible
         {
-            get => _newCard;
+            get => _isNoCardsAlertVisible;
             set
             {
-                _newCard = value;
-                OnPropertyChanged(nameof(NewCard));
+                _isNoCardsAlertVisible = value;
+                OnPropertyChanged(nameof(IsNoCardsAlertVisible));
+            }
+        }
+
+        private bool _displayCards;
+        public bool DisplayCards
+        {
+            get => _displayCards;
+            set
+            {
+                _displayCards = value;
+                OnPropertyChanged(nameof(DisplayCards));
             }
         }
 
@@ -137,7 +148,26 @@ namespace FlashLearn.ViewModels
             DefaultDeleteButtonColor = new Button().Background;
             DeleteButtonColor = DefaultDeleteButtonColor;
 
-            CardChanged();
+            if(CheckForCards())
+            {
+                CardChanged();
+            }
+        }
+
+        private bool CheckForCards()
+        {
+            if (Deck.Cards.Count == 0)
+            {
+                IsNoCardsAlertVisible = true;
+                DisplayCards = false;
+                return false;
+            } 
+            else
+            {
+                IsNoCardsAlertVisible = false;
+                DisplayCards = true;
+                return true;
+            }
         }
 
         private void UpdateCard()
@@ -175,11 +205,14 @@ namespace FlashLearn.ViewModels
 
         private void CardChanged()
         {
-            string front = Deck.Cards[_activeCardIndex].FrontString;
-            string back = Deck.Cards[ActiveCardIndex].BackString;
+            if(CheckForCards())
+            {
+                string front = Deck.Cards[_activeCardIndex].FrontString;
+                string back = Deck.Cards[ActiveCardIndex].BackString;
 
-            CardFrontText = front;
-            CardBackText = back;
+                CardFrontText = front;
+                CardBackText = back;
+            }
         }
 
         private void SaveDeck()
