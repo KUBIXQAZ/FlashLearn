@@ -68,6 +68,7 @@ namespace FlashLearn.ViewModels
 
         public RelayCommand FlipCardCommand => new RelayCommand(execute => FlipCard());
         public RelayCommand ProgressionCommand => new RelayCommand(execute => Progression());
+        public RelayCommand ReturnCommand => new RelayCommand(execute => Return());
 
         public GameViewModel(DeckModel deck)
         {
@@ -75,6 +76,11 @@ namespace FlashLearn.ViewModels
             _deck.Cards = ShuffleUtility.Shuffle(_deck.Cards);
 
             LoadGame();
+        }
+
+        private void Return()
+        {
+            Shell.Current.Navigation.PopAsync();
         }
 
         private void LoadGame()

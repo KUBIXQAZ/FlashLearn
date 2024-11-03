@@ -10,6 +10,7 @@ namespace FlashLearn.ViewModels
 
         public RelayCommand CreateNextCardCommand => new RelayCommand(execute => CreateNextCard());
         public RelayCommand FinishCreatingDeckCommand => new RelayCommand(execute => FinishCreatingDeck());
+        public RelayCommand CancelCommand => new RelayCommand(execute => Cancel());
 
         private string _cardFrontText;
         public string CardFrontText
@@ -107,6 +108,11 @@ namespace FlashLearn.ViewModels
 
             CardFrontText = string.Empty;
             CardBackText = string.Empty;
+        }
+
+        private void Cancel()
+        {
+            Shell.Current.Navigation.PopToRootAsync();
         }
     }
 }

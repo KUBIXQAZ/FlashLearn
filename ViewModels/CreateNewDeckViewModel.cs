@@ -35,6 +35,7 @@ namespace FlashLearn.ViewModels
         }
 
         public RelayCommand NextStepCommand => new RelayCommand(execute => NextStep());
+        public RelayCommand CancelCommand => new RelayCommand(execute => Cancel());
 
         public CreateNewDeckViewModel()
         {
@@ -48,6 +49,11 @@ namespace FlashLearn.ViewModels
             CreateNewCardPage createNewCardPage = new CreateNewCardPage();
             createNewCardPage.BindingContext = new CreateNewCardViewModel(deck);
             Shell.Current.Navigation.PushAsync(createNewCardPage);
+        }
+
+        private void Cancel()
+        {
+            Shell.Current.Navigation.PopAsync();
         }
     }
 }

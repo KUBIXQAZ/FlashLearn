@@ -9,11 +9,12 @@
            CornerRadius="15"
            BorderColor="Transparent"
            Margin="40"
-           HeightRequest="400">
+           MinimumHeightRequest="400">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <Label Grid.Row="0" 
@@ -29,8 +30,12 @@
             <Button Grid.Row="2" 
                     VerticalOptions="Center"
                     Text="Next"
+                    Margin="0,0,0,6"
                     IsEnabled="{Binding IsNextButtonEnabled}"
                     Command="{Binding NextStepCommand}"/>
+            <Button Grid.Row="3"
+                    Text="Cancel"
+                    Command="{Binding CancelCommand}"/>
         </Grid>
     </Frame>
 </ContentPage>

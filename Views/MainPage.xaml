@@ -10,6 +10,7 @@
         <Grid Grid.Row="0">
             <ImageButton Source="plus_lg.svg"
                          HeightRequest="40"
+                         Margin="5,0,5,0"
                          CornerRadius="10"
                          Command="{Binding CreateNewDeckCommand}">
                 <ImageButton.Shadow>
